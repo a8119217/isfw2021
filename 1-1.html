@@ -10,8 +10,24 @@
     <script type="text/javascript" src="osql.js"></script>
 
     <script>
+        var timer = setInterval(tick,2000);
+        function tick(){
+            execSelect(); 
+        }
         function button1Pressed() {
-            execSelect();
+            execSelect1();
+        }
+
+        async function execSelect1() {
+            var userid = document.getElementById('tf1').value;
+            var tweet = document.getElementById('tf2').value;
+
+            var sql = 'insert into Tweets (name, tweet, time) values("%USERID%", "%TWEET%", now());';
+            sql = sql.replace("%USERID%", userid);
+            sql = sql.replace("%TWEET%", tweet);
+            console.log(sql);
+            var objects = await osql.connect(sql);
+            console.log(objects);
         }
 
         async function execSelect() {
@@ -19,12 +35,17 @@
             var objects = await osql.connect(sql);
             console.log(objects);
             var html = '';
-            html = html + '<ul>';
+            html = html;
             for (var i = 0; i < objects.length; i++) {
                 var object = objects[i];
-                html = html + '<li>' + object.tweet + '</li>';
+                html = html + '<table border = 1  width = 650px>';
+                html = html +'<tr>' ;
+                html = html + '<td width = 100px>' + object.name + '</td>';
+                html = html + '<td width = 350px>' + object.tweet + '</td>';
+                html = html + '<td width = 200px>' + object.time + '</td>';
+                html = html +'<tr>';
             }
-            html = html + '</ul>';
+            html = html + '</table>';
             document.getElementById('result').innerHTML = html;
         }
     </script>
@@ -32,8 +53,13 @@
 </head>
 
 <body>
-    <h1>Tweets</h1>
-    <button onclick="button1Pressed()">X</button>
+    <h1>Tweets ayano's version</h1>
+    <br>
+    ログイン名:<input id="tf1" value="名無し" type="textfield">
+    <br>
+    tweet:<input id="tf2" type="textfield">
+    <button onclick="button1Pressed()">tweet</button>
+    
     <hr>
     <p id="result">xxxx</p>
 </body>
