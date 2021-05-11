@@ -12,6 +12,9 @@
     <script>
         function button1Pressed() {
             doInsert();
+
+            
+            
         }
 
         async function doInsert() {
@@ -22,7 +25,10 @@
             var objects = await osql.connect(sql);
             console.log(objects);
 
+            
+
             document.getElementById('result').innerHTML = "tweetしました";
+            document.getElementById('tf2').value = "";
         }
     </script>
 
