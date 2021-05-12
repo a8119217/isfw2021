@@ -15,7 +15,7 @@
         }
 
         async function doSelect() {
-            var search = document.getElementById('tf1').value;
+            var search = document.getElementById('text1').value;
             var sql = "select * from Tweets WHERE Tweet LIKE '%"+search+"%'";
             var objects = await osql.connect(sql);
             console.log(objects);
@@ -39,7 +39,7 @@
 
 <body>
     <h1>Tweets</h1>
-    <input id="tf1" type="textfield">
+    <input id="text1" type="textfield">
     <button onclick="button1Pressed()">検索</button>
     <hr>
     <p id="result">xxxx</p>
