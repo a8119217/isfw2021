@@ -23,10 +23,24 @@
 
             var sql = `insert into Tweets (name, tweet, time) values("${userid}", "${tweet}", now());`;
             var objects = await osql.connect(sql);
+            var sql = "select * from Tweets";
+            var objects = await osql.connect(sql);
             console.log(objects);
+            var html = '';
+            html = html + '<ul>';
+            for (var i = 0; i < objects.length; i++) {
+                var object = objects[i];
+                html = html + '<table border = 1  width = 650px>';
+                html = html +'<tr>' ;
+                html = html + '<td width = 100px>' + object.name + '</td>';
+                html = html + '<td width = 350px>' + object.tweet + '</td>';
+                html = html + '<td width = 200px>' + object.time + '</td>';
+                html = html +'<tr>';
+            }
+            html = html + '</table>';
+            document.getElementById('result2').innerHTML = html;
 
-            
-
+        
             document.getElementById('result').innerHTML = "tweetしました";
             document.getElementById('tf2').value = "";
         }
@@ -43,6 +57,7 @@
     <button onclick="button1Pressed()">tweet</button>
     <br>
     <p id="result"></p>
+    <p id="result2"></p>
 </body>
 
 </html>
