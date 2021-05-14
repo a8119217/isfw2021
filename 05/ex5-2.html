@@ -10,21 +10,40 @@
     <script type="text/javascript" src="../osql.js"></script>
 
     <script>
+        var timer = setInterval(tick,2000);
+        function tick(){
+            doInsert();
+        }
+
          $().ready(function () {
             doInsert();
         });
         
         function button1Pressed() {
-            doInsert();
+           tweet();
+           doInsert();
   
         }
-
-        async function doInsert() {
+        async function tweet(){
             var userid = document.getElementById('tf1').value;
             var tweet = document.getElementById('tf2').value;
 
             var sql = `insert into Tweets (name, tweet, time) values("${userid}", "${tweet}", now());`;
+           
+            sql = sql.replace("%USERID%", userid);
+            sql = sql.replace("%TWEET%", tweet);
+            console.log(sql);
             var objects = await osql.connect(sql);
+            console.log(objects);
+            document.getElementById('result').innerHTML = "tweetしました";
+            document.getElementById('tf2').value = "";
+            
+        }
+
+
+
+
+        async function doInsert() {
             var sql = "select * from Tweets";
             var objects = await osql.connect(sql);
             console.log(objects);
