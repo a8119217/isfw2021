@@ -10,13 +10,16 @@
     <script type="text/javascript" src="../osql.js"></script>
 
     <script>
+        var name = osql.getParam('name');
+            document.getElementById('welcome').innerHTML = 'ようこそ' + name + 'さん';
     </script>
 
 </head>
 
 <body>
     <h1>ユーザトップ</h1>
-    <p id="welcome">ようこそxxさん</p>
+    
+    <p id="welcome">ようこそさん</p>
     <hr>
 
 </body>
