@@ -21,6 +21,11 @@
         function buttonChange(){
            var id = sessionStorage.getItem('userid');
            location.href = 'update.html?userid='+id;
+        
+        }
+        function tweetspage(){
+            var id = sessionStorage.getItem('userid');
+            location.href = 'tweets.html?userid='+id;
         }
     </script>
 
@@ -31,6 +36,7 @@
     
     <p id="welcome"></p>
     <button onclick="buttonChange()">変更</button>
+    <button onclick="tweetspage()">tweetする</button>
     <hr>
 
 </body>
