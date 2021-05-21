@@ -19,8 +19,8 @@
             document.getElementById('welcome').innerHTML = 'ようこそ' + name + 'さん';
         }
         function buttonChange(){
-            var name = sessionStorage.getItem('username');
-           location.href = 'update.html?userid='+userid;
+           var id = sessionStorage.getItem('userid');
+           location.href = 'update.html?userid='+id;
         }
     </script>
 

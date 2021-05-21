@@ -11,6 +11,7 @@
 
     <script>
         async function buttonPressed() {
+            
             var userid = document.getElementById('tf1').value;
             var password = document.getElementById('tf2').value;
 
@@ -28,7 +29,7 @@
             sessionStorage.setItem('userid', objects[0].id);
             sessionStorage.setItem('username', objects[0].name);
 
-            location.href = 'usertop.html?userid='+userid;
+            location.href = 'usertop.html';
             
         }
     </script>
