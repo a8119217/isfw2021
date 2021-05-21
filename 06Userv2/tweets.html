@@ -63,7 +63,7 @@
             document.getElementById('result').innerHTML = "tweetしました";
             document.getElementById('tf2').value = "";
 
-            var userid = osql.getParam('userid');
+            var userid = sessionStorage.getItem('userid');
             var sql = `select * from Users where id="${userid}";`;
             var objects = await osql.connect(sql);
             document.getElementById('text').value = userid;
